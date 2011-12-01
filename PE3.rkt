@@ -7,11 +7,10 @@
         ((> try (sqrt n)) #t)
         (else (isprime n (+ try 1)))))
 
-(define (gpf n factor)
-  (if (and (= (remainder n factor) 0) 
-           (isprime factor 2))
-      factor
-      (gpf n (- factor 1))))
+(define (gpf x try)
+  (if (and (= (remainder x try) 0)
+           (isprime try 2))
+      ((display try) (newline) (gpf (/ x try) 2))
+      (gpf x (+ try 1))))
 
-(gpf 600851475143 (round (/ 600851475143 2)))
-        
+(gpf 100 2)
